@@ -1,0 +1,70 @@
+package ksoap2.soap;
+
+import java.util.Hashtable;
+
+import org.ksoap2.serialization.KvmSerializable;
+import org.ksoap2.serialization.PropertyInfo;
+import org.ksoap2.serialization.SoapObject;
+
+public class KeyImage implements KvmSerializable {
+	private static final long serialVersionUID = -1106006770093611055L;
+	private String key;
+	public String getKey() {
+		return key;
+	}
+	public void setKey(String key) {
+		this.key = key;
+	}
+
+	private SoapObject value;
+	
+	public KeyImage() {
+		
+	}
+	
+	public KeyImage (String key, SoapObject value) {
+		this.key = key;
+		this.value = value;
+	}
+	
+	public Object getProperty(int index) {
+		switch(index){
+		case 0:
+			return this.key;
+		case 1:
+			return this.value;
+		}
+		return null;
+	}
+
+	public int getPropertyCount() {
+		return 2;
+	}
+
+	public void setProperty(int index, Object value) {
+		switch(index){
+		case 0:
+			value = this.key;
+		case 1:
+			value = this.value;
+		}
+	}
+
+	public void getPropertyInfo(int index, Hashtable properties,
+			PropertyInfo info) {
+		switch(index){
+		case 0:
+			info.name = "key";
+			info.type = PropertyInfo.STRING_CLASS;
+			break;
+		case 1:
+		    info.name = "value";
+		    info.type = PropertyInfo.OBJECT_CLASS;
+		    break;
+		default:break;
+		}
+		
+	}
+	
+
+}
