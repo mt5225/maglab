@@ -69,7 +69,7 @@ public class ProductImageServiceTest {
 		try {
 			fileInputStream = new FileInputStream("C:/tmp/v2.jpg");
 			product_image = productImageService.uploadImageToProduct(
-					product_id, fileInputStream);
+					product_id, fileInputStream, "v2");
 			System.out.println(product_image);
 			assertNotNull(product_image);
 		} catch (FileNotFoundException e) {

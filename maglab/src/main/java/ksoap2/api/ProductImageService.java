@@ -30,7 +30,7 @@ public class ProductImageService {
 	 * 
 	 * @throws IOException
 	 */
-	public ProductImage uploadImageToProduct(String product_id, InputStream io) {
+	public ProductImage uploadImageToProduct(String product_id, InputStream io, String desc) {
 		try {
 			soapClient.clearObjMap();
 			soapClient.addMapping(new KeyValue());
@@ -38,7 +38,7 @@ public class ProductImageService {
 			Object soapResp;
 			soapResp = soapClient.call(Constants.METHOD_CALL,
 					ResourcePath.ProductAttributeMediaCreate.getPath(),
-					uploadImageHelper(product_id, io));
+					uploadImageHelper(product_id, io, desc));
 			String file = soapResp.toString();
 			ArrayList<ProductImage> imageList = listProductImage(product_id);
 			for (ProductImage pimg : imageList) {
@@ -53,7 +53,7 @@ public class ProductImageService {
 	}
 
 	private Map<String, Object> uploadImageHelper(String product_id,
-			InputStream io) throws IOException {
+			InputStream io, String desc) throws IOException {
 		Map<String, Object> params = new HashMap<String, Object>();
 		params.put("sessionId", this.soapClient.getSessionID());
 		Vector<Object> args = new Vector<Object>();
@@ -69,7 +69,7 @@ public class ProductImageService {
 		image.addProperty("item", content);
 		image.addProperty("item", mime);
 		so.addProperty("item", ki);
-		KeyValue label = new KeyValue("label", "v2");
+		KeyValue label = new KeyValue("label", desc);
 		so.addProperty("item", label);
 		KeyValue exclude = new KeyValue("exclude", "0");
 		so.addProperty("item", exclude);

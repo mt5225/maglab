@@ -25,7 +25,7 @@ public class CreateProduct {
 			// configure connection
 			SoapConfig soapConfig = new SoapConfig(user, pass, host);
 			System.out.println("after get soapconfig");
-			magentoSoapClient.setConfig(soapConfig);
+			//magentoSoapClient.setConfig(soapConfig);
 			
 			
 			ProductRemoteService productRemoteService = new ProductRemoteServiceImpl();

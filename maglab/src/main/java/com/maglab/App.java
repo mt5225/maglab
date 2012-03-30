@@ -2,7 +2,7 @@ package com.maglab;
 
 import java.util.List;
 
-import org.apache.axis2.AxisFault;
+
 
 import com.google.code.magja.model.category.Category;
 import com.google.code.magja.model.product.Product;
@@ -41,7 +41,7 @@ public class App
     	
     	// configure connection
     	SoapConfig soapConfig = new SoapConfig(user, pass, host);
-    	magentoSoapClient.setConfig(soapConfig);
+    	//magentoSoapClient.setConfig(soapConfig);
     	
     	// get category object
     	CategoryRemoteService categoryRemoteService = new CategoryRemoteServiceImpl();
